@@ -18,7 +18,7 @@ function HomepageHeader() {
             <div className={styles.buttons}>
               <Link
                 className="button button--secondary button--lg"
-                to="/docs/hello"
+                to="/docs/intro"
               >
                 NigaPHP in 5min ⏱️
               </Link>
