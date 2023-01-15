@@ -13,39 +13,16 @@ function HomepageHeader() {
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
-        <div style={{ textAlign: "left" }} className="row">
-          <div className="col">
-            <h1 className="hero__title">{siteConfig.title}</h1>
+          <h1 className="hero__title">{siteConfig.title}</h1>
             <p className="hero__subtitle">{siteConfig.tagline}</p>
             <div className={styles.buttons}>
               <Link
                 className="button button--secondary button--lg"
-                to="/docs/intro"
+                to="/docs/hello"
               >
-                NigaPHP Framework - 5min ⏱️
+                NigaPHP in 5min ⏱️
               </Link>
             </div>
-            <div style={{ textAlign: "left", paddingTop: "1rem" }}>
-              <CodeBlock language="bash" showLineNumbers>
-                {`composer create-project niga/niga my-web-app`}
-              </CodeBlock>
-            </div>
-          </div>
-          <div className="col" style={{ textAlign: "left" }}>
-            <CodeBlock language="php" title="src/Controller" showLineNumbers>
-              {`<?php namespace App\\Controller;
-
-use Niga\\Framework\\Attributes\Route;
-use Nigatedev\\Framework\\Controller\\AbstractController;
-
-class SiteController extends AbstractController
-{
-    #[Route('/', name:'home', method:'get')]
-    public function home() { return $this->render("home", []); }
-}`}
-            </CodeBlock>
-          </div>
-        </div>
       </div>
     </header>
   );
