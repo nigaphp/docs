@@ -1,40 +1,94 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
-# Tutorial Intro
-
-Let's discover **NigaPHP 5 minutes**.
-
-## Getting Started
-
-Get started by **creating a new site**.
+# Getting Started
 
 
-### What you'll need
+Let's discover **NigaPHP Framework in 5 minutes**.
 
-- [All you need is composer](https://getcomposer.org/download/)
-  - When installing composer, you are recommended to install it from the official website.
 
-## Create a new site
+Get started by **creating a new Website**.
 
+
+
+## Prerequisites
+
+1. Install PHP
+2. Install Composer 
+
+```json showLineNumbers
+"php": "^7.4|^8.0",
+"ext-pdo_mysql": "*",
+"ext-pdo_pgsql": "*",
+"ext-pdo_sqlite": "*",
+"composer": "^2.0"
 ```
-composer create-project niga/niga my-website 
+
+## Installation
+
+```bash
+composer create-project nigaphp/niga site_name
 ```
 
 You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+The command also installs all necessary dependencies you need to run NigaPHP.
 
-## Start your site
+## Development server
 
-Run the development server:
+Change directory to your new website `my-website`
 
 ```bash
 cd my-website
 niga run:dev
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created, you'll need to navigate the terminal there.
+Default values **[HOST=localhost, PORT=8000, PUBLIC_PATH=public]** you can change this in the config file `%APP_ROOT%/config/app.json`
 
-The `niga run:dev` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:8000/.
+Then open the this link in your web browser http://localhost:8000/.
+
+
+## Create a controller
+
+```bash
+niga make:controller HomeController
+```
+In this situation, we are creating a controller for the **home** page.
+
+This command will create two new files for us.
+1. `src/Controler/HomeController.php`
+
+Here is your new controller class.
+
+```php showLineNumbers
+<?php
+namespace App\Controller;
+
+use Niga\Framework\Controller\AbstractController;
+use Niga\Framework\Attributes\Route;
+
+class SiteController extends AbstractController
+{
+ // code-block-error-line
+    #[Route('/home', name:'home', method:'get')]
+    public function home() {
+        return $this->render("home", [
+            "name" => "home"
+        ]);
+    }
+
+}
+```
+
+2. `views/home.php`
+
+And this is the view to rendered.
+
+```php showLineNumbers
+<?php if ($cName && $cPath) : ?>
+    <h3>Hello <span class='be-color-py be-code'><?= $cName ?></span></h3>
+    <p>Your <span class='be-color-py be-code'><?= $cName ?></span> class is located at <span class='be-color-py be-code'><?= $cPath ?></span> !</p>
+<?php endif ?>
+```
