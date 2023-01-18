@@ -71,7 +71,6 @@ use Niga\Framework\Attributes\Route;
 
 class SiteController extends AbstractController
 {
- // code-block-error-line
     #[Route('/home', name:'home', method:'get')]
     public function home() {
         return $this->render("home", [
